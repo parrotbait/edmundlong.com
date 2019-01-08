@@ -1,5 +1,13 @@
 'use strict';
 
+function sendAnalytics(category, action, label, value) {
+    if (value >= 0) {
+        ga('send', 'event', category, action, label, value)   
+    } else {
+        ga('send', 'event', category, action, label)   
+    }
+}
+
 jQuery(function($, undefined) {
     
     var content = []
@@ -21,7 +29,9 @@ jQuery(function($, undefined) {
         terminal.echo(new String(`
 Type the following into the command prompt to receive more info about me!
         ` + menuOptions + `
-        `))
+        `), {
+            keepWords: true
+        })
     }
 
     function getGreeting() {
@@ -163,7 +173,7 @@ Type the following into the command prompt to receive more info about me!
 
         `)
         .setColor('#AAFF99')
-        .setPrompt('Do you want to see my journey? Y/n ')
+        .setPrompt('Do you want to see my journey? (Y/n) ')
     content.push(bio)
 
     let journey = new Command('journey', `
@@ -402,7 +412,7 @@ Choose from any of these options:
     * Google Play Services, Butterknife, Picasso, HockeyApp, LeakCanary amongst others
     `)
     .setColor('orange')
-    .setPrompt('Do you want to see my interests? Y/n ')
+    .setPrompt('Do you want to see my interests? (Y/n) ')
     content.push(skills)
 
     let work = new Command('interests', `
@@ -411,24 +421,24 @@ Choose from any of these options:
     Enjoy football and rugby. 
     I'm always tinkering away on some project in the background, a lot are just for learning purposes - sometimes I [[i;;]even release] something!
     `).setColor('#80D4FF')
-    .setPrompt('Do you want to see some other random stuff? Y/n ')
+    .setPrompt('Do you want to see some other random stuff? (Y/n) ')
 
     content.push(work)
 
     let randomstuff = new Command('random', `
+    I made a Cocoapod called SWLogger that I use for logging (to be upgraded to use os_log soon!) 
+    https://bit.ly/2Flpa8N
+  
     I also wrote something about using C++ in a cross platform way at Blippar: 
     https://bit.ly/2sfztmX
-
-    I made a Cocoapod that I use for logging (to be upgraded to use os_log soon!) 
-    https://bit.ly/2Flpa8N
-    
+  
     I wrote an article about the rubbishness of the Property Price Register: 
     https://bit.ly/2ReSW61`).setColor('pink')
 
     content.push(randomstuff)
     
     let education = new Command('education', `
-    [[;#E6CCFF;]MSc in Computer Game Technology at Abertay University, Dundee Scotland (2006 - 2008)]
+    [[;#E6CCFF;]MSc in Computer Game Technology @ Abertay University, Dundee Scotland (2006 - 2008)]
 
         Dissertation: Enhanced NPC Behaviour using Goal Oriented Action
         Planning. The dissertation implemented a GOAP system approach to AI
@@ -442,7 +452,7 @@ Choose from any of these options:
         Programming for PC and XBOX, Console Game Development, Games
         Marketplace and Game Design and Development.
     
-    [[;#E6CCFF;]BSc in Computer Science at UCC, Ireland (2002 - 2006)]
+    [[;#E6CCFF;]BSc in Computer Science @ UCC, Ireland (2002 - 2006)]
         
         Overall average mark of [[;yellow;]88.9%] and received a nomination for Science
         [[;yellow;]Graduate of the Year] in 2006 for highest mark in the class. Awarded a
@@ -452,7 +462,7 @@ Choose from any of these options:
         Databases & SQL, Operating Systems, Virtual Reality, Web Programming,
         Work Placement, Abstract Data Structures, C Programming and Final year project
         
-    [[;#E6CCFF;]Leaving Cert at Colaiste on Spioraid Naoimh, Cork (2002)]
+    [[;#E6CCFF;]Leaving Cert @ Colaiste on Spioraid Naoimh, Cork (2002)]
         
         Received an [[;yellow;]entrance scholarship] from UCC due to Leaving Certificate
         results. Awarded the [[;yellow;]'Eacht an Colaiste'] award from Spioraid Naoimh and
@@ -468,7 +478,24 @@ Choose from any of these options:
         terminal.set_prompt('>>> ')
     }
     var terminal = $('#term_demo').terminal(function(command) {
-        command = command.toLowerCase();
+        command = command.toLowerCase().trim();
+
+        // Check for <enter> when Y/n is in the prompt
+        if (command === '') {
+            if (currentItem) {
+                // This is a 'bit' of a hack - not very robust to the change of text
+                var prompt = currentItem.getPrompt().toLowerCase();
+                if (prompt && prompt.indexOf('y/n') != -1) {
+                    let index = content.indexOf(currentItem)
+                    if (index + 1 < content.length) {
+                        sendAnalytics('keystroke', 'enter', currentItem.getName(), 1)
+                        // Change the command to the next command
+                        command = content[index + 1].getName()
+                    }
+                }
+            } 
+        }
+
         if (command !== '') {
             if (currentItem && currentItem.isInSuboptions()) {
                 let suboptions = currentItem.getSuboptions()
@@ -476,45 +503,59 @@ Choose from any of these options:
                     try {
                         var value = parseInt(command)
                         if (value > 0 && value <= suboptions.options.length) {
-                            this.echo(suboptions.options[value - 1].getContent())
-                            this.echo(new String(getSuboptionText(currentItem)))
+                            this.echo(suboptions.options[value - 1].getContent(), {
+                                keepWords: true
+                            })
+                            this.echo(new String(getSuboptionText(currentItem)), {
+                                keepWords: true
+                            })
+
+                            sendAnalytics('keystroke', 'option', suboptions.options[value - 1].getName(), value)
                             scrollToBottom();
                             return
                         } else {
-                            this.echo(new String('Invalid choice, enter a number between 1 and ' + suboptions.options.length + ' or press <enter> to skip'))
+                            this.error(new String('Invalid choice, enter a number between 1 and ' + suboptions.options.length + ' or press <enter> to skip'))
                             return
                         }
                     } catch (e) {
                         console.log(e)
                     }
                 } else {
-                    this.echo(new String('Invalid choice, enter a number between 1 and ' + suboptions.options.length + ' or press <enter> to skip'))
+                    this.error(new String('Invalid choice, enter a number between 1 and ' + suboptions.options.length + ' or press <enter> to skip'))
                     return
                 }
             }
+            sendAnalytics('keystroke', 'command', command, -1)
             switch (command) {
-                case 'n':
+                case 'n': 
                 case 'N':
                     if (currentItem && currentItem.getPrompt()) {
+                        sendAnalytics('keystroke', 'yes_no', currentItem.getName(), 0)
                         resetPrompt()
                         return
                     }
+                    break;
                 case 'y':
                 case 'Y':
                     if (currentItem && currentItem.getPrompt()) {
                         let index = content.indexOf(currentItem)
                         if (index + 1 < content.length) {
+                            sendAnalytics('keystroke', 'yes_no', currentItem.getName(), 1)
                             command = content[index + 1].getName()
                         }
                         break;
                     }
+                    break;
                 case 'clear':
+
+                    sendAnalytics('keystroke', 'command', 'clear', -1)
                     this.clear()
                     resetPrompt()
                     return   
                 case 'help':
                 case 'menu':
                     logHelp()
+                    sendAnalytics('keystroke', 'command', 'help', -1)
                     return
             }
 
@@ -525,7 +566,9 @@ Choose from any of these options:
                 }
                 var contentText = contentItem.getContent()
                 contentText += getSuboptionText(contentItem)
-                this.echo(new String(contentText))
+                this.echo(new String(contentText), {
+                    keepWords: true
+                })
                 
                 if (contentItem.hasSuboptions() && !contentItem.isInSuboptions()) {
                     contentItem.setSuboptionPromptActive(true)
@@ -536,6 +579,8 @@ Choose from any of these options:
                 } else {
                     resetPrompt()
                 }
+
+                sendAnalytics('text', 'show', contentItem.getName(), -1)
                 this.scroll_to_bottom()
                 scrollToBottom();
                 currentItem = contentItem
@@ -544,14 +589,19 @@ Choose from any of these options:
 
             // Unknown command
             console.log('Unknown command ' + command)
+            sendAnalytics('text', 'unknown', command, -1)
             this.error(usage());
         } else {
-            if (currentItem && currentItem.isInSuboptions()) {
-                currentItem.setSuboptionPromptActive(false)
-                if (currentItem.getPrompt()) {
-                    this.set_prompt(currentItem.getPrompt())
-                    return
-                }
+            if (currentItem) {
+                if (currentItem.isInSuboptions()) {
+                    currentItem.setSuboptionPromptActive(false)
+
+                    sendAnalytics('keystroke', 'enter_sub', currentItem.getName(), -1)
+                    if (currentItem.getPrompt()) {
+                        this.set_prompt(currentItem.getPrompt())
+                        return
+                    }
+                } 
             }
             this.echo('');
             this.scroll_to_bottom()
@@ -563,7 +613,9 @@ Choose from any of these options:
         prompt: '>>> ',
         scrollOnEcho: true,
         onClear: function(term) {
-            term.echo(getGreeting())
+            term.echo(getGreeting(), {
+                keepWords: true
+            })
         }
     });
 });

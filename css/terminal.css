@@ -55,5 +55,5 @@
 .terminal, .cmd, .terminal .terminal-output div div, .cmd .prompt {
     font-size: 20px;
     line-height: 24px;
-    font-family: 'Courier New', Courier, monospace
+    font-family: 'Courier New', Courier, monospace;   
 }
