@@ -1,0 +1,59 @@
+.terminal .inverted, .cmd .inverted, .cmd .cursor.blink {
+    background-color: rgb(2, 129, 2);
+    color: #000;
+}
+
+@-webkit-keyframes terminal-blink {
+    0%, 100% {
+        background-color: #000;
+        color: rgb(2, 129, 2);
+    }
+    50% {
+        background-color: rgb(2, 129, 2);
+        color: #000;
+    }
+}
+@-ms-keyframes terminal-blink {
+    0%, 100% {
+        background-color: #000;
+        color: rgb(2, 129, 2);
+    }
+    50% {
+        background-color: rgb(2, 129, 2);
+        color: #000;
+    }
+}
+@-moz-keyframes terminal-blink {
+    0%, 100% {
+        background-color: #000;
+        color: rgb(2, 129, 2);
+    }
+    50% {
+        background-color: rgb(2, 129, 2);
+        color: #000;
+    }
+}
+@keyframes terminal-blink {
+    0%, 100% {
+        background-color: #000;
+        color: rgb(2, 129, 2);
+    }
+    50% {
+        background-color: rgb(2, 129, 2);
+        color: #000;
+    }
+}
+
+.terminal .terminal-output > :not(.raw) .error,
+.terminal .terminal-output > :not(.raw) .error * {
+    text-shadow: 0 0 3px rgba(200, 0, 0, 0.6);
+}
+.terminal .terminal-output > :not(.raw) a[href] {
+    text-shadow: 0 0 3px rgba(15, 96, 255, 0.6);
+}
+
+.terminal, .cmd, .terminal .terminal-output div div, .cmd .prompt {
+    font-size: 20px;
+    line-height: 24px;
+    font-family: 'Courier New', Courier, monospace
+}
