@@ -29,9 +29,7 @@ jQuery(function($, undefined) {
         terminal.echo(new String(`
 Type the following into the command prompt to receive more info about me!
         ` + menuOptions + `
-        `), {
-            keepWords: true
-        })
+        `))
     }
 
     function getGreeting() {
@@ -482,7 +480,7 @@ Choose from any of these options:
 
         // Check for <enter> when Y/n is in the prompt
         if (command === '') {
-            if (currentItem) {
+            if (currentItem && currentItem.getPrompt()) {
                 // This is a 'bit' of a hack - not very robust to the change of text
                 var prompt = currentItem.getPrompt().toLowerCase();
                 if (prompt && prompt.indexOf('y/n') != -1) {
@@ -503,12 +501,8 @@ Choose from any of these options:
                     try {
                         var value = parseInt(command)
                         if (value > 0 && value <= suboptions.options.length) {
-                            this.echo(suboptions.options[value - 1].getContent(), {
-                                keepWords: true
-                            })
-                            this.echo(new String(getSuboptionText(currentItem)), {
-                                keepWords: true
-                            })
+                            this.echo(suboptions.options[value - 1].getContent())
+                            this.echo(new String(getSuboptionText(currentItem)))
 
                             sendAnalytics('keystroke', 'option', suboptions.options[value - 1].getName(), value)
                             scrollToBottom();
@@ -566,9 +560,7 @@ Choose from any of these options:
                 }
                 var contentText = contentItem.getContent()
                 contentText += getSuboptionText(contentItem)
-                this.echo(new String(contentText), {
-                    keepWords: true
-                })
+                this.echo(new String(contentText))
                 
                 if (contentItem.hasSuboptions() && !contentItem.isInSuboptions()) {
                     contentItem.setSuboptionPromptActive(true)
@@ -613,9 +605,7 @@ Choose from any of these options:
         prompt: '>>> ',
         scrollOnEcho: true,
         onClear: function(term) {
-            term.echo(getGreeting(), {
-                keepWords: true
-            })
+            term.echo(getGreeting())
         }
     });
 });
