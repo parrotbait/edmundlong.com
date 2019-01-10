@@ -12,7 +12,8 @@ jQuery(function($, undefined) {
     
     var tryKeepWords = mobilecheck(); // Keep words on mobile
     var content = []
-
+    var beepCount = 1
+    
     function usage() {
         return 'Whoops - didn\'t get that, type \'help\' to get instructions' 
     }
@@ -58,7 +59,9 @@ Type the following into the command prompt to receive more info about me!
     Note: some words are truncated on mobile 
     and ascii art work can get messed up
 
-    You can learn about me with some very simple commands. 
+    You can learn about me with some
+    very simple commands. 
+    
     Type '[[i;;]help]' to start.
       `
     }
@@ -223,7 +226,7 @@ Type the following into the command prompt to receive more info about me!
 
     2002 - Leaving Cert. @ Colaiste An Spioraid Naoimh
 
-        [[i;;]600 points!]
+        [[;#FFE666;]600 points!]
     `)
     .setColor('yellow')
     .setPrompt(`Do you want to see my skills? (Y/n) `)
@@ -537,6 +540,58 @@ Choose from any of these options:
             }
             sendAnalytics('keystroke', 'command', command, -1)
             switch (command) {
+                case 'rm -rf':
+                case 'rm -rf .':
+                case 'rm -rf *':
+                    this.echo('Cheeky....')
+                    scrollToBottom();
+                    return;
+                case 'beep':
+                    var text = ''
+                    for (let i = 0; i < beepCount; ++i) {
+                        if (text.length) text += ' '
+                        text += 'beep'
+                    }
+                    beepCount++
+                    this.echo(text)
+                    scrollToBottom();
+                    return
+                case 'ls':
+                case 'ls -al':
+                case 'ls -la':
+                    this.echo('Nothing to list! Try entering bio instead ;)') 
+                    scrollToBottom();
+                    return;
+                case 'parrot':
+                    this.echo('<img src="assets/party-parrot-terminal.mov.gif" /><br>', {
+                        raw: true
+                    })
+                    scrollToBottom();
+                    return;
+                case 'cv':
+                case 'resume':
+                    this.echo('Get it here: https://bit.ly/2FiJjMp')
+                    scrollToBottom();
+                    return;
+                case 'exit':
+                    this.echo('There is no exit')
+                    scrollToBottom();
+                    return;
+                case 'quit':
+                    this.echo('Nobody likes a quitter')
+                    scrollToBottom();
+                    return;
+                case 'who are you':
+                case 'whoami':
+                    this.echo('Eddie Long....I think')
+                    scrollToBottom();
+                    return;
+                case 'author':
+                case 'credit':
+                    this.echo('Eddie Long')
+                    this.echo('Get my resume/CV here: https://bit.ly/2FiJjMp')
+                    scrollToBottom();
+                    return;
                 case 'n': 
                 case 'N':
                     if (currentItem && currentItem.getPrompt()) {
@@ -557,15 +612,45 @@ Choose from any of these options:
                     }
                     break;
                 case 'clear':
-
                     sendAnalytics('keystroke', 'command', 'clear', -1)
                     this.clear()
                     resetPrompt()
                     return   
+                case 'hi':   
+                case 'hey':   
+                case 'hello':   
+                case 'hi': 
+                case 'yo':
+                    const textArray = [
+                        'Yo',
+                        'Hey',
+                        'Ola',
+                        'Hola',
+                        'Hallo',
+                        'Ciao',
+                        'Nameste',
+                        'Whats up?',
+                        'Conas a ta tu?',
+                        'Bonjour',
+                        'Howdy',
+                        'Dia duit',
+                        'Whats the craic?',
+                        'Story?',
+                        'Howya buddy',
+                        'Whats the story?',
+                        'Howdy',
+                    ];
+                    let randomNumber = Math.floor(Math.random()*textArray.length);
+                    this.echo(textArray[randomNumber])
+                    scrollToBottom();
+                    return;
+                case '?':  
+                case 'man':
                 case 'help':
                 case 'menu':
                     logHelp()
                     sendAnalytics('keystroke', 'command', 'help', -1)
+                    scrollToBottom();
                     return
             }
 
