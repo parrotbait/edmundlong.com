@@ -61,7 +61,7 @@ Type the following into the command prompt to receive more info about me!
 
     You can learn about me with some
     very simple commands. 
-    
+
     Type '[[i;;]help]' to start.
       `
     }
@@ -385,19 +385,19 @@ Choose from any of these options:
     let skills = new Command('skills', `
     [[;yellow;]Languages]
 
-    * C & C++ 11/14 (9+ years)
-    * Objective C (6+ years)
-    * Java (6+ years)
-    * Swift (1 year professionally, also in personal projects)
-    * Kotlin (~1-2 years)
-    * Bash (~4 years)
-    * Python (~4 years)
-    * JS, ES6 (~4 years)
-    * C#
-    * ActionScript, Javscript
-    * HTML, XML, XSLT, XSD
-    * MySQL, PHP
-    * Python, TCL
+    * C & C++ 11/14 (excellent)
+    * Objective C (excellent)
+    * Java (excellent)
+    * Swift (proficient)
+    * Kotlin (familiar)
+    * Bash (proficient)
+    * Python (proficient)
+    * JS, ES6 (proficient)
+    * Python (proficient)
+    * HTML, XML, XSLT, XSD (familiar)
+    * C# (familiar)
+    * MySQL, PHP (familiar)
+    * TCL (familiar)
 
     [[;#FF9999;]Source Control]
 
@@ -445,6 +445,9 @@ Choose from any of these options:
     I also wrote something about using C++ in a cross platform way at Blippar: 
     https://bit.ly/2sfztmX
   
+    An article about an approach to localization in storyboards
+    https://bit.ly/2FjOLzw
+
     I wrote an article about the rubbishness of the Property Price Register: 
     https://bit.ly/2ReSW61`).setColor('pink')
 
