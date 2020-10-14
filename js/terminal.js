@@ -190,43 +190,63 @@ Type the following into the command prompt to receive more info about me!
     content.push(bio)
 
     let journey = new Command('journey', `
-    Jan 2013 - Dec 2018 @ [[;orange;]Blippar], London (and remote from Cork, Ireland)
+    2002 - Leaving Cert. @ Colaiste An Spioraid Naoimh
 
-        [[i;;]Senior Mobile Developer
-        Mobile Engineering Lead] on
-        [[;orange;]Blippar SDK & App]
-    
-    Nov 2012 - Jan 2013 @ [[;white;]Mindshapes], London
+        [[;#FFE666;]600 points!]
 
-        [[i;;]Lead Mobile Developer] on
-        [[;#FF6666;]MagicTown]
-    
-    Sept 2010 - Nov 2012 @ [[;#FFE666;]CyberSportsWorld], London
+    2002 - 2006 - Computer Science @ UCC.
 
-        [[i;;]Senior Game Developer] on 
-        [[;#FF6666;]Football Superstars and StrikerSuperstars]
+        [[i;;]First Class Honours!] with an average of [[;#FFE666;]88.9%]
 
-    Dec 2009 - Sept 2010 @ [[;#80D4FF;]Singstar], Sony, London
+    2006 - 2008 - MSc. Computer Games Technology @ Abertay Uni, Dundee
 
-        [[i;;]UI/Gameplay Developer] on
-        [[;#FF6666;]Singstar]
+        [[i;;]Distinction] with an average of [[;#FFE666;]95%]
 
     October 2008 - December 2009 @ [[;#BBFF99;]Beautiful Games Studio/Eidos], London
 
         [[i;;]Front End C++ Developer] on 
         [[;#FF6666;]Championship Manager 2010]
 
-    2006 - 2008 - MSc. Computer Games Technology @ Abertay Uni, Dundee
 
-        [[i;;]Distinction] with an average of [[;#FFE666;]95%]
+    Dec 2009 - Sept 2010 @ [[;#80D4FF;]Singstar], Sony, London
 
-    2002 - 2006 - Computer Science @ UCC.
+        [[i;;]UI/Gameplay Developer] on
+        [[;#7B68EE;]Singstar]
 
-        [[i;;]First Class Honours!] with an average of [[;#FFE666;]88.9%]
+    Sept 2010 - Nov 2012 @ [[;#FFE666;]CyberSportsWorld], London
 
-    2002 - Leaving Cert. @ Colaiste An Spioraid Naoimh
+        [[i;;]Senior Game Developer] on 
+        [[;#3CB371;]Football Superstars and StrikerSuperstars]
 
-        [[;#FFE666;]600 points!]
+    Nov 2012 - Jan 2013 @ [[;white;]Mindshapes], London
+
+        [[i;;]Lead Mobile Developer] on
+        [[;#FF6666;]MagicTown]
+    
+    Jan 2013 - Dec 2018 @ [[;orange;]Blippar], London (and remote from Cork, Ireland)
+
+        [[i;;]Senior Mobile Developer
+        Mobile Engineering Lead] on
+        [[;orange;]Blippar SDK & App]
+
+    Feb 2019 - March 2019 @ [[;green;]Pushfor], London (remote from Cork, Ireland)
+
+        [[i;;]Senior iOS Developer] on the
+        [[;green;]Pushfor app]
+    
+    April 2019 - March 2020 @ [[;orange;]Whoppah], Amsterdam (remote from Cork, Ireland)
+
+        [[i;;]Senior Software Engineer] on the
+        [[;orange;]Whoppah app]
+    
+    March 2020 - October 2020 @ [[;#295A9E;]PMD Solutions], Cork
+
+        [[i;;]Senior Software Engineer] working on code, infrastructure for multiple apps and servers
+    
+    October 2020 - Present @ [[;#DCDCDC;]Apple], Cork
+
+        [[i;#DCDCDC;]Senior iOS and macOS Engineer] working on the Radar IS&T team
+    
     `)
     .setColor('yellow')
     .setPrompt(`Do you want to see my skills? (Y/n) `)
@@ -235,7 +255,87 @@ Type the following into the command prompt to receive more info about me!
 Choose from any of these options:
 
     `, options: [
-        new Command(`1. Blippar
+        new Command(`1. Apple
+        `, `                                                                                                         
+        [[;DCDCDC;]
+         _______  _______  _______  ___      _______ 
+        |   _   ||       ||       ||   |    |       |
+        |  |_|  ||    _  ||    _  ||   |    |    ___|
+        |       ||   |_| ||   |_| ||   |    |   |___ 
+        |       ||    ___||    ___||   |___ |    ___|
+        |   _   ||   |    |   |    |       ||   |___ 
+        |__| |__||___|    |___|    |_______||_______|                                                                                                       
+        ]
+
+    [[;DCDCDC;]Apple] is an American multinational technology company headquartered in Cupertino, California, 
+    that designs, develops and sells consumer electronics, computer software, and online services.
+
+    This is a new role so I'll fill in more detail here when I know more!
+    `).setColor('#DCDCDC'),
+    new Command(`
+    2. PMD Solutions
+        `, `                                                                                                         
+        [[;#DCDCDC;]
+         ____  __  __ ____  
+        |  _ \\|  \\/  |  _ \\ 
+        | |_) | |\\/| | | | |
+        |  __/| |  | | |_| |
+        |_|   |_|  |_|____/       
+
+        ]
+
+    [[;DCDCDC;]PMD Solutions] is a progressive company which is developing innovative patient friendly technologies 
+    to support health providers' early prevention model of patient care in the hospital environment.
+
+    At my time PMD my role was quite wide reaching. I was the main driver of the technical direction of the company with a hands-on focus on development on iOS.
+    The company has a number of public and in-house iOS applications which interact via bluetooth and over the air with the PMD hardware.
+    I managed the company's Amazon AWS setup, developed app and Bluetooth firmware protocols (and code),
+    gathered requirements, wrote documentation, liaised with nursing and IT on-site to troubleshoot live issues, added real time site monitoring and alerting,
+    and added robust data backup routines.
+
+    In terms of app development, PMD had two separate apps - the RR app and the Air Dashboard. The RR app is a native app used for direct bluetooth communication with the PMD hardware.
+    The Air Dashboard is an Ionic app that is used for viewing patient statuses remotely, as bluetooth signals are relayed over the air via Cassia bluetooth routers.
+    I merged these apps together in to a single app (for maintenance and business reasons). In doing so, I designed all the wireframes and screens, incorporating feedback from
+    stakeholders along the way. I gathered requirements both from the existing product and for the new features that were desired in the new version of the merged app. 
+    In terms of implementation I moved the app towards a MVVM structure using RxSwift & RxCocoa with dependency injection. This allowed for more thorough testing and validation
+    of logic that was not possible before. I also added a networking layer for subscribing to the Cassia data feeds, along with CoreData for data persistence. There are thousands of datapoints
+    coming over the air so the CoreData implementation was quite challenging. 
+    The company also had a manufacturing app which verifies that the produced hardware is fully functional. I ported this app over from Android, splitting out the RR app core bluetooth functionality
+    into a separate library to be shared between both apps. This allowed for consistent use of Bluetooth between the production and test apps. I also added GSuite integration to allow for 
+    verification of users and logging of test data to company Google Spreadsheets. 
+    `).setColor('#295A9E'),
+    new Command(`
+    3. Whoppah
+        `, `                                                                                                         
+        [[;orange;]
+                               
+         _ _ _ _                   _   
+        | | | | |_ ___ ___ ___ ___| |_ 
+        | | | |   | . | . | . | .'|   |
+        |_____|_|_|___|  _|  _|__,|_|_|
+                      |_| |_|                                                                                                                                                                                                                                                                                                                                                                         
+        ]
+
+    [[;orange;]Whoppah] is a smart first class marketplace for second-hand design and art.
+
+    At Whoppah my focus was entirely on the company's flagship iOS application. Initially when I arrived into the company I worked alongside 
+    an external agency developers to create various screens and features eventually releasing V1 of the product with very challenging deadlines.
+    
+    The initial version of the product was a success but quickly it became apparent that the backend was not robust or flexible enough to grow to match the company's ambitions. 
+    So the company undertook a huge undertaking to migrate from REST to GraphQL. I worked very closely with the Android developer and the backend engineer to migrate over from the 
+    40-odd REST APIs to GraphQL. I contributed frequently to the backend implementation (using Apollo in JS) and refactored the iOS application to match. At the same time the company 
+    required certain enhancements to the existing live app which also were implemented along the way. I cannot understate how big a job this was, it took over 6 months in all but
+    now the company is in a much better position to grow and scale as a consequence. 
+
+    I continued to develop and maintain the product since the GraphQL migration, adding features and tweaking flows to improve retention, funnels and other KPIs.
+
+    Some of the features of the app: ARKit integration for Art previews, Firebase for pushes, realtime chat between users, a homepage driven dynamically from the server, searchable catalog, 
+    complex ad creation and editing process (over 15 screens), Sign up with Apple/Google/Facebook/Email sign in and registration, multiple checkout and shipping options,
+    bidding and auction logic and Stripe integration for various international payment options.
+    The app was designed with RxSwift + MVVM used at scale, with core components tested via unit tests. CI was through Fastlane and CircleCI along with using Firebase's App Distribution for beta testing.
+    `).setColor('orange'),
+    new Command(`
+    4. Blippar
         `, `                                                                                                         
         [[;orange;]
          _______   __        ________  ______   ______   ________   ______       
@@ -279,7 +379,7 @@ Choose from any of these options:
     sprint meetings] (grooming, planning and daily standup) and created various build scripts to 
     [[;#80D4FF;]drastically reduce build times] of the app & SDK.`).setColor('orange'),
         new Command(`
-    2. CyberSportsWorld
+    5. CyberSportsWorld
         `, `
         [[;yellow;]
          _____       _                                    _       
@@ -326,7 +426,7 @@ Choose from any of these options:
     C++ on the server side but I also created a Python-based headless client system 
     to allow us to test client-server protocol stability and measure server capacity under load.`).setColor('#FFE666'),
         new Command(`
-    3. Sony Singstar
+    6. Sony Singstar
         `, `
         [[;#FF6666;]
            _____ _                  __            
@@ -352,7 +452,7 @@ Choose from any of these options:
     During my job at Sony I learnt all about the challenges in developing for the PS3, PS3 libraries all using 
     C++ and a bit about gesture recognition.`).setColor('#80D4FF'),
         new Command(`
-    4. BGS Champ Man
+    7. BGS Champ Man
         `, `
         [[;#BBFF99;]
           ___|  |                                    \\   |               
@@ -385,15 +485,17 @@ Choose from any of these options:
     let skills = new Command('skills', `
     [[;yellow;]Languages]
 
+    * Swift (excellent)
     * C & C++ 11/14 (excellent)
     * Objective C (excellent)
     * Java (excellent)
-    * Swift (proficient)
     * Kotlin (familiar)
     * Bash (proficient)
     * Python (proficient)
-    * JS, ES6 (proficient)
+    * JS, ES6, Node (proficient)
     * Python (proficient)
+    * Docker (familiar)
+    * React (familiar)
     * HTML, XML, XSLT, XSD (familiar)
     * C# (familiar)
     * MySQL, PHP (familiar)
@@ -417,11 +519,12 @@ Choose from any of these options:
     [[;#80D4FF;]SDKs and Libraries:]
 
     * iOS SDK and Android SDK including ARKit and ARCore
+    * RxSwift, RxCocoa
+    * Fastlane, SwiftLint, SwiftFormat
     * OpenGL ES2
     * DirectX
-    * OpenAL
-    * OpenSL
-    * AFNetworking, CocoaLumberjack, Firebase, AppsFlyer, Fabric and more
+    * OpenAL, OpenSL
+    * AFNetworking, CocoaLumberjack, Firebase, AppsFlyer, Fabric and a whole host of others.
     * Google Play Services, Butterknife, Picasso, HockeyApp, LeakCanary amongst others
     `)
     .setColor('orange')
@@ -449,9 +552,23 @@ Choose from any of these options:
     https://bit.ly/2FjOLzw
 
     I wrote an article about the rubbishness of the Property Price Register: 
-    https://bit.ly/2ReSW61`).setColor('pink')
+    https://bit.ly/2ReSW61`)
+    .setColor('pink')
+    .setPrompt('Want to get in touch (Y/n) ')
 
     content.push(randomstuff)
+    
+    let contact = new Command('contact', `
+
+    You can get in touch in the following ways...
+    
+    Email: eddie.long.dev@gmail.com 
+    Twitter: https://twitter.com/parrotbait
+    LinkedIn: https://www.linkedin.com/in/eddie-long/
+    Github: https://github.com/parrotbait
+    `
+    )
+    content.push(contact)
     
     let education = new Command('education', `
     [[;#E6CCFF;]MSc in Computer Game Technology @ Abertay University, Dundee Scotland (2006 - 2008)]
@@ -573,7 +690,7 @@ Choose from any of these options:
                     return;
                 case 'cv':
                 case 'resume':
-                    this.echo('Get it here: https://bit.ly/2FiJjMp')
+                    this.echo('Get it here: https://bit.ly/33UeKIV')
                     scrollToBottom();
                     return;
                 case 'exit':
@@ -592,7 +709,7 @@ Choose from any of these options:
                 case 'author':
                 case 'credit':
                     this.echo('Eddie Long')
-                    this.echo('Get my resume/CV here: https://bit.ly/2FiJjMp')
+                    this.echo('Get my resume/CV here: https://bit.ly/33UeKIV')
                     scrollToBottom();
                     return;
                 case 'n': 
