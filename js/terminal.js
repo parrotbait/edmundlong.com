@@ -179,7 +179,7 @@ Type the following into the command prompt to receive more info about me!
     * Windows Phone and Desktop
     * Blackberry 10
     
-    Full CV: https://bit.ly/2FiJjMp
+    Full CV: https://bit.ly/33UeKIV
     Github: https://github.com/parrotbait
     Twitter: https://twitter.com/parrotbait
     LinkedIn: https://www.linkedin.com/in/eddie-long/
