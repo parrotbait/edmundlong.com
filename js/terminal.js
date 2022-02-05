@@ -270,7 +270,30 @@ Choose from any of these options:
     [[;DCDCDC;]Apple] is an American multinational technology company headquartered in Cupertino, California, 
     that designs, develops and sells consumer electronics, computer software, and online services.
 
-    This is a new role so I'll fill in more detail here when I know more!
+    In this role I worked as part of the iOS and macOS Radar client teams, supporting and enhancing the Radar 
+    application which is a critical part of workflows for thousands of Apple employees.
+    I worked primarily as part of the iOS team as senior member of the team. 
+    This involved participating in the routine agile processes, writing proposals, code review, prototyping, 
+    tech talks and some mentoring of junior interns. I was a pretty prominent member of the team, which had 11 members. 
+    The app itself is a large app which many different aspects to it, maybe the biggest one I've worked on. 
+    It also has a lot of legacy, there is a significant amount of Objective-C code throughout and much of my time was spent
+    either maintaining or modernising parts of the code. The was a large shared codebase between the iOS and macOS so a 
+    great deal of thought of impacts of changes was needed, I dedicated a lot of effort to try and provide 
+    consistent, expressive and functional APIs between the two platforms so behavior would remain consistent and centrally managed.
+    
+    I had some large projects when in the team, the biggest was probably introducing multi-window support for iPadOS. 
+    It had such a huge positive impact for our customers but was technically challenging as it affected almost 
+    all parts of the app. The next biggest project was a rework of the Find Problem screen. The previous implementation
+    had diverged from macOS and had several functional gaps which frustrated users. This was reflected in the code
+    with iOS having separate logic to macOS and so the behavior wasn't consistent. I re-wrote the screen to match 
+    the macOS UI and UX, moving macOS code into our shared code. This screen is one of the most critical parts of the app, 
+    so it was important that regressions and bugs were kept to a minimum. Overall, the project was a huge success and received 
+    very well by customers. Other significant projects included: rewrote the entire home screen again sharing code with macOS, added a widget to the app, 
+    implemented push notifications, added support for Dynamic Type and large accessibiltiy content sizes, 
+    introduced xcconfig for project configuration and modernised APIs and screens throughout.
+
+    I care deeply about code quality and in the team, I helped define and establish Swift and Objective-C code guidelines and
+    formatting tools.
     `).setColor('#DCDCDC'),
     new Command(`
     2. PMD Solutions
@@ -488,7 +511,7 @@ Choose from any of these options:
     * Swift (excellent)
     * C & C++ 11/14 (excellent)
     * Objective C (excellent)
-    * Java (excellent)
+    * Java (proficient)
     * Kotlin (familiar)
     * Bash (proficient)
     * Python (proficient)
@@ -513,13 +536,14 @@ Choose from any of these options:
     * Android Studio & Eclipse (shudder)
     * Visual Studio - been a while though
     * Unity & MonoDevelop - been a while too
-    * SourceTree
+    * SourceTree & Fork
     * VS Code
 
     [[;#80D4FF;]SDKs and Libraries:]
 
     * iOS SDK and Android SDK including ARKit and ARCore
-    * RxSwift, RxCocoa
+    * SwiftUI, some experience.
+    * Combine, RxSwift, RxCocoa
     * Fastlane, SwiftLint, SwiftFormat
     * OpenGL ES2
     * DirectX
